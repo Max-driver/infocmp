@@ -35,8 +35,8 @@
   ],
   "globalStyle": {
     "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "校园通",
-    "navigationBarBackgroundColor": "#0055ff",
+    "navigationBarTitleText": "黑马优购",
+    "navigationBarBackgroundColor": "#F00000",
     "backgroundColor": "#FFFFFF"
   },
   "uniIdRouter": {},

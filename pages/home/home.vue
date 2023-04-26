@@ -1,19 +1,38 @@
 <template>
-  <view>
-    Home
-  </view>
+  <view>Home</view>
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-
-      };
+export default {
+  data() {
+    return {
+      // 1. 这是轮播图数据
+      swiperList: []
+    };
+  },
+  onLoad() {
+    // 2. 在小程序页面刚加载的时候，调用获取轮播图数据的方法
+    this.getSwiperList();
+  },
+  methods: {
+    // 3. 获取轮播图数据的方法
+    async getSwiperList() {
+      // 3.1 发起请求
+      const { data: res } = await uni.$http.get('/api/public/v1/home/swiperdata');
+      // 3.2 请求失败
+      if (res.meta.status !== 200) {
+        return uni.showToast({
+          title: '数据请求失败!',
+          duration: 1500,
+          icon: 'none'
+        });
+      }
+      // 3.3 请求成功，为 data 中的数据赋值
+      console.log('ok');
+      this.swiperList = res.message;
     }
   }
+};
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>
