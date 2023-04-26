@@ -36,7 +36,7 @@
   "globalStyle": {
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "校园通",
-    "navigationBarBackgroundColor": "#C00000",
+    "navigationBarBackgroundColor": "#0055ff",
     "backgroundColor": "#FFFFFF"
   },
   "uniIdRouter": {},
