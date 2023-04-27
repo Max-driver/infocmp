@@ -1,7 +1,4 @@
 <template>
-  <<<<<<< HEAD
-  <view>Home</view>
-  =======
   <view>
     <!-- 轮播图 -->
     <swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000" :circular="true">
@@ -41,15 +38,11 @@
       </view>
     </view>
   </view>
-  >>>>>>> home
 </template>
 
 <script>
 export default {
   data() {
-<<<<<<< HEAD
-    return {};
-=======
     return {
       // 1. 这是轮播图数据
       swiperList: [],
@@ -103,14 +96,10 @@ export default {
       });
       this.floorList = res.message;
     }
->>>>>>> home
   }
 };
 </script>
 
-<<<<<<< HEAD
-<style lang="scss"></style>
-=======
 <style lang="scss">
 // 轮播图
 swiper {
