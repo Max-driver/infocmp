@@ -35,8 +35,8 @@
   ],
   "globalStyle": {
     "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "校园通",
-    "navigationBarBackgroundColor": "#0055ff",
+    "navigationBarTitleText": "黑马优购",
+    "navigationBarBackgroundColor": "#F00000",
     "backgroundColor": "#FFFFFF"
   },
   "uniIdRouter": {},
@@ -68,5 +68,27 @@
       }
     ]
 
-  }
+  },
+  "subPackages": [{
+    "root": "subpkg",
+    "pages": [{
+                    "path" : "goods_detail/goods_detail",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+                ,{
+                    "path" : "goods_list/goods_list",
+                    "style" :                                                                                    
+                {
+                    "navigationBarTitleText": "",
+                    "enablePullDownRefresh": false
+                }
+                
+                }
+            ]
+  }]
 }

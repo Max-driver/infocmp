@@ -50,7 +50,7 @@
   "quickapp": {},
   /* 小程序特有相关 */
   "mp-weixin": {
-    "appid": "",
+    "appid": "wxe712a6de33cf8e37",
     "setting": {
       "urlCheck": false,
       // 取消索引的警告信息
