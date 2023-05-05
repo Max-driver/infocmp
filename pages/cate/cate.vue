@@ -1,5 +1,7 @@
 <template>
   <view>
+    <!-- 自定义搜索组件 -->
+    <my-search @goSearch="gotoSearch"></my-search>
     <view class="scroll-view-container">
       <!-- 左侧的滚动视图区域 -->
       <scroll-view class="left-scroll-view" scroll-y :style="{ height: wh + 'px' }">
@@ -32,11 +34,11 @@
 export default {
   data() {
     return {
-      // 窗口的可用高度 = 屏幕高度 - navigationBar高度 - tabBar 高度
+      // 窗口的可用高度 = 屏幕高度 - navigationBar高度 - tabBar 高度- my-search高度
       wh: 0,
-      // 当前项的索引，默认选择第一项
+      // 分类数据列表
       cateList: [],
-      // 选中项
+      // 选中项，当前项的索引，默认选择第一项
       active: 0,
       // 右侧二级分类列表
       cateList2: [],
@@ -47,8 +49,8 @@ export default {
   onLoad() {
     // 获取当前系统的信息
     const sysInfo = uni.getSystemInfoSync();
-    // 为 wh 窗口可用高度动态赋值
-    this.wh = sysInfo.windowHeight;
+    // 为 wh 窗口可用高度动态赋值，可用高度 = 屏幕高度 - navigationBar高度 - tabBar高度 - 自定义的search组件高度
+    this.wh = sysInfo.windowHeight - 50;
     this.getCateList();
   },
 
@@ -74,6 +76,13 @@ export default {
     gotoGoodsList(item3) {
       uni.navigateTo({
         url: '/subpkg/goods_list/goods_list?cid=' + item3.cat_id
+      });
+    },
+    // 跳转搜索框页面
+    gotoSearch() {
+      // 跳转到分包的搜索页面
+      uni.navigateTo({
+        url: '/subpkg/search/search'
       });
     }
   }
