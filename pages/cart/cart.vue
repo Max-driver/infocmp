@@ -1,29 +1,36 @@
 <template>
-  <view class="cart-container">
-    <!-- 地址栏 -->
-    <my-address></my-address>
+  <view>
+    <view class="cart-container" v-if="cart.length !== 0">
+      <!-- 地址栏 -->
+      <my-address></my-address>
 
-    <!-- 购物车商品列表的标题区域 -->
-    <view class="cart-title">
-      <!-- 左侧图标 -->
-      <uni-icons type="shop" size="18"></uni-icons>
-      <!-- 描述文本 -->
-      <text class="cart-title-text">购物车</text>
+      <!-- 购物车商品列表的标题区域 -->
+      <view class="cart-title">
+        <!-- 左侧图标 -->
+        <uni-icons type="shop" size="18"></uni-icons>
+        <!-- 描述文本 -->
+        <text class="cart-title-text">购物车</text>
+      </view>
+
+      <!-- 商品列表区域 -->
+      <!-- uni-swipe-action 是最外层包裹性质的容器 -->
+      <uni-swipe-action>
+        <block v-for="(goods, index) in cart" :key="index">
+          <!-- uni-swipe-action-item 可以为其子节点提供滑动操作的效果。需要通过 options 属性来指定操作按钮的配置信息 -->
+          <uni-swipe-action-item :right-options="options" @click="swipeActionClickHandler(goods)">
+            <my-goods :goods="goods" :show-radio="true" :show-num="true" @radio-change="radioChangeHandler" @num-change="numberChangeHandler"></my-goods>
+          </uni-swipe-action-item>
+        </block>
+      </uni-swipe-action>
+
+      <!-- 商品结算 -->
+      <my-settle></my-settle>
     </view>
 
-    <!-- 商品列表区域 -->
-    <!-- uni-swipe-action 是最外层包裹性质的容器 -->
-    <uni-swipe-action>
-      <block v-for="(goods, index) in cart" :key="index">
-        <!-- uni-swipe-action-item 可以为其子节点提供滑动操作的效果。需要通过 options 属性来指定操作按钮的配置信息 -->
-        <uni-swipe-action-item :right-options="options" @click="swipeActionClickHandler(goods)">
-          <my-goods :goods="goods" :show-radio="true" :show-num="true" @radio-change="radioChangeHandler" @num-change="numberChangeHandler"></my-goods>
-        </uni-swipe-action-item>
-      </block>
-    </uni-swipe-action>
-
-    <!-- 商品结算 -->
-    <my-settle></my-settle>
+    <view class="empty-cart" v-else>
+      <image src="/static/cart_empty@2x.png" class="empty-img"></image>
+      <text class="tip-text">空空如也~</text>
+    </view>
   </view>
 </template>
 
@@ -57,8 +64,6 @@ export default {
     // 将 m_cart 模块中的 cart 数组映射到当前页面中使用
     ...mapState('m_cart', ['cart'])
   },
-
-  onLoad() {},
 
   onShow() {},
 
@@ -101,6 +106,25 @@ export default {
   border-bottom: 1px solid #efefef;
   .cart-title-text {
     margin-left: 10px;
+  }
+}
+
+// 空白时购物车图片样式
+.empty-cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 150px;
+
+  .empty-img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .tip-text {
+    font-size: 12px;
+    color: gray;
+    margin-top: 15px;
   }
 }
 </style>
