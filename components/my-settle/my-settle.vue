@@ -42,7 +42,7 @@ export default {
     ...mapMutations('m_cart', ['updateAllGoodsState']),
 
     // label 的点击事件处理函数，改变全选状态
-    // !this.isFullCheck 表示：当前全选按钮的状态取反之后，就是最新的勾选状态
+    // !this.isFullCheck 表示:当前全选按钮的状态取反之后，就是最新的勾选状态
     changeAllState() {
       this.updateAllGoodsState(!this.isFullCheck);
     }
