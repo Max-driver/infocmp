@@ -56,7 +56,13 @@
       // 取消索引的警告信息
       "checkSiteMap": false
     },
-    "usingComponents": true
+    "usingComponents": true,
+    "requiredPrivateInfos": [
+      "getLocation",
+      "onLocationChange",
+      "startLocationUpdateBackground",
+      "chooseAddress"
+    ]
   },
   "mp-alipay": {
     "usingComponents": true

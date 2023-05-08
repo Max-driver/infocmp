@@ -1,5 +1,8 @@
 <template>
-  <view>
+  <view class="cart-container">
+    <!-- 地址栏 -->
+    <my-address></my-address>
+
     <!-- 购物车商品列表的标题区域 -->
     <view class="cart-title">
       <!-- 左侧图标 -->
@@ -18,6 +21,9 @@
         </uni-swipe-action-item>
       </block>
     </uni-swipe-action>
+
+    <!-- 商品结算 -->
+    <my-settle></my-settle>
   </view>
 </template>
 
@@ -82,6 +88,9 @@ export default {
 </script>
 
 <style lang="scss">
+.cart-container {
+  padding-bottom: 50px;
+}
 // 标题
 .cart-title {
   height: 40px;

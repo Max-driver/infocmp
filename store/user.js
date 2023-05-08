@@ -6,7 +6,8 @@ export default {
   state: () => ({
     // 收货地址
     // 读取本地的收货地址数据，初始化 address 对象
-    address: JSON.parse(uni.getStorageSync('address' || '{}'))
+    address: JSON.parse(uni.getStorageSync('address') || '{}')
+    // address: {}
   }),
 
   // 方法
@@ -21,6 +22,8 @@ export default {
 
     // 1. 定义将 address 持久化存储到本地 mutations 方法
     saveAddressToStorage(state) {
+      // const newAddress = JSON.stringify(state.address)
+      // uni.setStorageSync('address', encodeURIComponent(newAddress))
       uni.setStorageSync('address', JSON.stringify(state.address))
     },
 
