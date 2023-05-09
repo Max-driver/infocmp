@@ -178,7 +178,7 @@ export default {
         // uni.switchTab({
         //   url: '/pages/my/my'
         // });
-        alert('立即购买');
+        console.log('立即购买');
       }
     }
   }

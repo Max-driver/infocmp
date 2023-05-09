@@ -39,7 +39,7 @@
 import badgeMin from '@/mixins/tabbar-badge.js';
 
 // 按需导入 mapState 辅助函数
-import { mapState, mapMutations } from 'vuex';
+import { mapState, mapMutations, mapGetters } from 'vuex';
 
 export default {
   // 将 badgeMix 合并到当前的页面中进行使用
@@ -64,8 +64,6 @@ export default {
     // 将 m_cart 模块中的 cart 数组映射到当前页面中使用
     ...mapState('m_cart', ['cart'])
   },
-
-  onShow() {},
 
   methods: {
     // 导入更新商品状态和数量的方法
