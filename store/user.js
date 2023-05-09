@@ -10,12 +10,11 @@ export default {
     address: JSON.parse(uni.getStorageSync('address') || '{}'),
 
     // 登录成功之后的 token 字符串
-    // token: uni.getStorageSync('token') || '',
-    token: '',
+    token: uni.getStorageSync('token') || '',
 
     // 用户基本信息
-    // userinfo: JSON.parse(uni.getStorageSync('userinfo' || '{}'))
-    userinfo: ''
+    userinfo: JSON.parse(uni.getStorageSync('userinfo' || '{}'))
+    // userinfo: ''
   }),
 
   // 方法
@@ -30,8 +29,6 @@ export default {
 
     // 1. 定义将 address 持久化存储到本地 mutations 方法
     saveAddressToStorage(state) {
-      // const newAddress = JSON.stringify(state.address)
-      // uni.setStorageSync('address', encodeURIComponent(newAddress))
       uni.setStorageSync('address', JSON.stringify(state.address))
     },
 
@@ -58,7 +55,7 @@ export default {
 
     // 将 token 字符串持久化存储到本地
     saveTokenToStorage(state) {
-      // uni.setStorageSync('token', state.token)
+      uni.setStorageSync('token', state.token)
     },
 
   },

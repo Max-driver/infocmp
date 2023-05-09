@@ -29,4 +29,9 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+page,
+.my-container {
+  height: 100%;
+}
+</style>
