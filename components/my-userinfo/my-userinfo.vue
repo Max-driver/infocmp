@@ -1,20 +1,14 @@
 <template>
-  <view>
-    
-  </view>
+  <view>my</view>
 </template>
 
 <script>
-  export default {
-    name:"my-userinfo",
-    data() {
-      return {
-        
-      };
-    }
+export default {
+  name: 'my-userinfo',
+  data() {
+    return {};
   }
+};
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>
