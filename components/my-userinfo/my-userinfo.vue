@@ -98,14 +98,24 @@ export default {
     // 退出登录
     async logout() {
       // 询问用户是否退出登录
-      const [err, succ] = await uni
+      const res = await uni
         .showModal({
           title: '提示',
           content: '确定退出登录吗？'
         })
         .catch(err => err);
 
-      if (succ && succ.confirm) {
+      //----------------Max--star---------------
+      // 由于现在 wx 该 showModal API 的值为对象，所以不能使用解构
+      // const [err, succ] = await uni
+      //   .showModal({
+      //     title: '提示',
+      //     content: '确定退出登录吗？'
+      //   })
+      //   .catch(err => err);
+      //-------------end-------------------------
+
+      if (res && res.confirm) {
         // 用户确认了退出登录的操作
         // 需要清空 vuex 中的 userinfo、token 和 address
         this.updateUserInfo({});
