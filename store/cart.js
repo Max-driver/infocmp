@@ -65,7 +65,6 @@ export default {
     removeGoodsById(state, goods_id) {
       // 调用数组的 filter 方法将需要删除的商品进行过滤
       state.cart = state.cart.filter(x => x.goods_id !== goods_id)
-      console.log(goods_id);
       // 持久化存储到本地
       this.commit('m_cart/saveToStorage')
     },

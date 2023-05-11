@@ -170,7 +170,6 @@ export default {
 
       // 2.3 得到订单支付相关的必要参数
       const payInfo = res2.message.pay;
-      console.log(payInfo);
 
       // 3. 发起微信支付
       // 3.1 调用 uni.requestPayment() 发起微信支付

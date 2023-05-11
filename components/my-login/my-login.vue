@@ -70,7 +70,6 @@ export default {
         //------------------end-------------------------------
 
         fail: res => {
-          console.log(res);
           return uni.$showMsg('您取消了登入授权');
         }
       });

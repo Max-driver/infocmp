@@ -14,16 +14,16 @@
         <view class="row1-left">
           <view class="username">
             收货人：
-            <!-- <text>{{ address.userName }}</text> -->
-            <text>张三</text>
+            <text>{{ address.userName }}</text>
+            <!-- <text>张三</text> -->
           </view>
         </view>
         <!-- 右边 -->
         <view class="row1-right">
           <view class="phone">
             电话：
-            <!-- <text>{{ address.telNumber }}</text> -->
-            <text>13879456780</text>
+            <text>{{ address.telNumber }}</text>
+            <!-- <text>13879456780</text> -->
           </view>
           <uni-icons type="arrowright" size="16"></uni-icons>
         </view>
