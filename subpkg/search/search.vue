@@ -1,7 +1,7 @@
 <template>
   <view>
     <!-- 使用 uni-ui 提供的搜索组件 -->
-    <view class="search-box"><uni-search-bar @input="getInput" :radius="100" cancelButton="none"></uni-search-bar></view>
+    <view class="search-box"><uni-search-bar @confirm="searchEvent" @input="getInput" :radius="100" cancelButton="none"></uni-search-bar></view>
 
     <!-- 搜索建议列表 -->
     <view class="sugg-list" v-if="searchResults.length !== 0">
@@ -63,26 +63,28 @@ export default {
       clearTimeout(this.timer);
       // 重新启动一个延时器，并把 timerId 赋值给 this.timer
       this.timer = setTimeout(() => {
-        // 如果 500 毫秒内，没有触发新的输入事件，则为搜索关键词赋值
-        this.kw = e.trim();
-        // 根据 kw 来发起搜索请求
-        this.getSearchList();
-      }, 500);
+        // 如果 1000 毫秒内，没有触发新的输入事件则发起搜索请求
+        this.getSearchList(e.trim());
+      }, 1000);
     },
     
     // 根据搜索关键词，搜索商品建议列表
-    async getSearchList() {
-      //先判断 kw 是否为空
-      if (this.kw === '') {
+    async getSearchList(e) {
+      // 先判断搜索是否为空
+      if (e === '') {
         this.searchResults = [];
         return;
       }
       //不为空则发起请求
-      const { data: res } = await uni.$http.get('/api/public/v1/goods/qsearch', { query: this.kw });
+      const { data: res } = await uni.$http.get('/api/public/v1/goods/qsearch', { query: e });
       if (res.meta.status !== 200) return uni.$showMsg();
       this.searchResults = res.message;
+    },
+    
+    searchEvent(res){
+      this.kw = res.value;
       //保存历史记录
-      this.saveSearchHistory();
+      this.saveSearchHistory()
     },
     
     gotoDetail(goods_id) {
@@ -172,10 +174,14 @@ export default {
   .history-list {
     display: flex;
     flex-wrap: wrap;
+    padding: 5px;
 
     .uni-tag {
-      margin-top: 5px;
-      margin-right: 5px;
+      display: inline-block;
+      color: #242424;
+      margin-bottom: 8px;
+      margin-right: 8px;
+      border-radius: 12px;
     }
   }
 }

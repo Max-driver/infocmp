@@ -11,8 +11,7 @@ export default {
     token: uni.getStorageSync('token') || '',
 
     // 用户基本信息
-    // userinfo: JSON.parse(uni.getStorageSync('userinfo' || '{}')),
-    userinfo: JSON.parse(decodeURIComponent(uni.getStorageSync('userinfo')) || '{}'),
+    userinfo: JSON.parse(uni.getStorageSync('userinfo' || '{}')),
 
     // 重定向的 object 对象 { openType, from }
     redirectInfo: null
@@ -42,9 +41,7 @@ export default {
 
     // 将 userinfo 持久化存储到本地
     saveUserInfoToStorage(state) {
-      // uni.setStorageSync('userinfo', JSON.stringify(state.userinfo))
-      const userinfos = encodeURIComponent(state.userinfo)
-      uni.setStorageSync('userinfo', JSON.stringify(userinfos))
+      uni.setStorageSync('userinfo', JSON.stringify(state.userinfo))
     },
 
     // 更新 token 字符串

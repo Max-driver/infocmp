@@ -93,6 +93,10 @@ export default {
     ...mapState('m_user', ['userinfo'])
   },
 
+  created() {
+    
+  },
+
   methods: {
     ...mapMutations('m_user', ['updateUserInfo', 'updateToken', 'updateAddress']),
     
