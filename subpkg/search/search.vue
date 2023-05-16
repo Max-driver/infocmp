@@ -35,7 +35,7 @@ export default {
       // 延时器
       timer: null,
       // 搜索关键词
-      kw: '',
+      kw: null,
       // 搜索的结果
       searchResults: [],
       // 历史记录
@@ -82,7 +82,8 @@ export default {
     },
     
     searchEvent(res){
-      this.kw = res.value;
+      if (!res.value) return;
+      this.kw = res.value.trim();
       //保存历史记录
       this.saveSearchHistory()
     },
@@ -96,14 +97,12 @@ export default {
     
     // 保存搜索关键词为历史记录
     saveSearchHistory() {
-      // this.historyList.push(this.kw);
-
       // 解决重复的记录
       // 1. 将 Array 数组转化为 Set 对象
       const set = new Set(this.historyList);
       // 2. 调用 Set 对象的 delete 方法，移除对应的元素
       set.delete(this.kw);
-      // 3. 调用 Set 对象的 add 方法，向 Set 中添加元素
+      // 3. 调用 Set 对象的 add 方法，向 Set 中添加元素会自动去重
       set.add(this.kw);
       // 4. 将 Set 对象转化为 Array 数组
       this.historyList = Array.from(set);
