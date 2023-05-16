@@ -95,6 +95,7 @@ export default {
 
   methods: {
     ...mapMutations('m_user', ['updateUserInfo', 'updateToken', 'updateAddress']),
+    
     // 退出登录
     async logout() {
       // 询问用户是否退出登录

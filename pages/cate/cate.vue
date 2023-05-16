@@ -72,6 +72,7 @@ export default {
       // 因为默认左侧的一级目录选中第一项，所以默认右侧二级也是第一项数据
       this.cateList2 = res.message[0].children;
     },
+    
     // 改变选择项,同时修改二级列表数据
     activeChanged(index) {
       this.active = index;
@@ -80,11 +81,13 @@ export default {
       // 让 scrollTop 值在 0 或 1 进行变化，达到切换后仍然置顶的效果
       this.scrollTop = this.scrollTop === 0 ? 0.1 : 0;
     },
+    
     gotoGoodsList(item3) {
       uni.navigateTo({
         url: '/subpkg/goods_list/goods_list?cid=' + item3.cat_id
       });
     },
+    
     // 跳转搜索框页面
     gotoSearch() {
       // 跳转到分包的搜索页面

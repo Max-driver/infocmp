@@ -4,9 +4,7 @@ export default {
 
   // state 数据
   state: () => ({
-    // 收货地址
-    // address: {}
-    // 读取本地的收货地址数据，初始化 address 对象
+    // 收货地址，读取本地的收货地址数据，初始化 address 对象
     address: JSON.parse(uni.getStorageSync('address') || '{}'),
 
     // 登录成功之后的 token 字符串
@@ -15,7 +13,6 @@ export default {
     // 用户基本信息
     // userinfo: JSON.parse(uni.getStorageSync('userinfo' || '{}')),
     userinfo: JSON.parse(decodeURIComponent(uni.getStorageSync('userinfo')) || '{}'),
-    // userinfo: '',
 
     // 重定向的 object 对象 { openType, from }
     redirectInfo: null

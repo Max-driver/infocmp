@@ -54,6 +54,7 @@ export default {
     return {
       // 商品详情对象
       goods_info: {},
+      
       // 左侧按钮组的配置对象
       options: [
         {
@@ -66,6 +67,7 @@ export default {
           info: 0
         }
       ],
+      
       // 右侧按钮组的配置对象
       buttonGrop: [
         {
@@ -119,16 +121,19 @@ export default {
   methods: {
     // 把 m_cart 模块中的 addToCart 方法映射到当前页面使用
     ...mapMutations('m_cart', ['addToCart']),
+    
     // 定义请求商品详情数据的方法
     async getGoodsDetail(goods_id) {
       const { data: res } = await uni.$http.get('/api/public/v1/goods/detail', { goods_id });
       if (res.meta.status !== 200) return uni.$showMsg();
 
       // 使用字符串的 replace() 方法，为 img 标签添加行内的 style 样式，从而解决图片底部空白间隙的问题，并且解决 ios 无法显示 .webp 的后缀
+      // replace() 里面使用了正则表达式来匹配 webp 字符，并且指定 g 全局匹配
       res.message.goods_introduce = res.message.goods_introduce.replace(/<img /g, '<img style="display:block;"').replace(/webp/g, 'jpg');
       // 为 data 的数据赋值
       this.goods_info = res.message;
     },
+    
     // 实现轮播图的预览效果
     preview(index) {
       // 调用 uni.previewImage() 方法预览图片
@@ -139,10 +144,11 @@ export default {
         urls: this.goods_info.pics.map(x => x.pics_big)
       });
     },
+    
     // uni-goods-nav 左侧按钮的点击事件处理函数
     onClick(e) {
       if (e.content.text === '店铺') {
-        alert('店铺');
+        console.log('店铺');
       }
       // 跳转到购物车页面
       else if (e.content.text === '购物车') {
@@ -151,6 +157,7 @@ export default {
         });
       }
     },
+    
     // uni-goods-nav 右侧按钮的点击事件处理函数
     buttonClick(e) {
       // 点击了 加入购物车 按钮
@@ -175,9 +182,7 @@ export default {
       }
       // 跳转到购买订单页面
       else if (e.content.text === '立即购买') {
-        // uni.switchTab({
-        //   url: '/pages/my/my'
-        // });
+        console.log('购买功能未开放');
       }
     }
   }

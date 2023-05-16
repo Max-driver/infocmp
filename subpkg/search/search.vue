@@ -42,10 +42,12 @@ export default {
       historyList: []
     };
   },
+  
   onLoad() {
     // 加载本地存储的历史记录
     this.historyList = JSON.parse(uni.getStorageSync('kw') || '[]');
   },
+  
   computed: {
     // 反转历史记录顺序
     historys() {
@@ -53,6 +55,7 @@ export default {
       return [...this.historyList].reverse();
     }
   },
+  
   methods: {
     // 获取最新内容
     getInput(e) {
@@ -66,6 +69,7 @@ export default {
         this.getSearchList();
       }, 500);
     },
+    
     // 根据搜索关键词，搜索商品建议列表
     async getSearchList() {
       //先判断 kw 是否为空
@@ -80,12 +84,14 @@ export default {
       //保存历史记录
       this.saveSearchHistory();
     },
+    
     gotoDetail(goods_id) {
       uni.navigateTo({
         // 指定详情页面的 URL 地址，并传递 goods_id 参数
         url: '/subpkg/goods_detail/goods_detail?goods_id=' + goods_id
       });
     },
+    
     // 保存搜索关键词为历史记录
     saveSearchHistory() {
       // this.historyList.push(this.kw);
@@ -102,11 +108,13 @@ export default {
       // 调用 uni.setStorageSync(key, value) 将搜索历史记录持久化存储到本地
       uni.setStorageSync('kw', JSON.stringify(this.historyList));
     },
+    
     // 清空历史记录及本地历史记录
     cleanHistory() {
       this.historyList = [];
       uni.setStorageSync('kw', '[]');
     },
+
     // 点击跳转到商品列表页面
     gotoGoodsList(kw) {
       uni.navigateTo({

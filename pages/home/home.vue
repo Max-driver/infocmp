@@ -80,12 +80,14 @@ export default {
       // 3.3 请求成功，为 data 中的数据赋值
       this.swiperList = res.message;
     },
+    
     // 获取分类导航数据
     async getNavList() {
       const { data: res } = await uni.$http.get('/api/public/v1/home/catitems');
       if (res.meta.status !== 200) return uni.$showMsg();
       this.navList = res.message;
     },
+    
     // 点击切换分类页面
     navClickHandler(item) {
       if (item.name === '分类') {
@@ -94,6 +96,7 @@ export default {
         });
       }
     },
+    
     // 获取楼层数据
     async getFloorList() {
       const { data: res } = await uni.$http.get('/api/public/v1/home/floordata');

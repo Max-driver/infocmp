@@ -25,9 +25,11 @@ export default {
       default: 18
     }
   },
+  
   data() {
     return {};
   },
+  
   methods: {
     // 点击模拟输入框方法
     searchBoxHandler() {

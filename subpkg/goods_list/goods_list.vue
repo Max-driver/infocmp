@@ -35,6 +35,7 @@ export default {
       isloading: false
     };
   },
+  
   onLoad(option) {
     // 将页面参数转存到 this.queryObj 对象中
     this.queryObj.query = option.query || '';
@@ -42,6 +43,7 @@ export default {
     // 调用获取商品列表数据的方法
     this.getGoodsList();
   },
+  
   methods: {
     // 获取商品列表数据的方法
     async getGoodsList(cb) {
@@ -60,6 +62,7 @@ export default {
       this.goodsList = [...this.goodsList, ...res.message.goods];
       this.total = res.message.total;
     },
+    
     // 点击跳转到商品详情页面
     gotoDetail(item) {
       uni.navigateTo({
@@ -67,7 +70,8 @@ export default {
       });
     }
   },
-  // 触底事件
+  
+  // 上拉拉及触底事件
   onReachBottom() {
     // 判断是否还有下一页数据: 当前的页码值 * 每页显示多少条数据 >= 总数条数
     if (this.queryObj.pagenum * this.queryObj.pagesize >= this.total) return uni.$showMsg('数据加载完毕');
@@ -79,6 +83,7 @@ export default {
     // 重新获取列表数据
     this.getGoodsList();
   },
+  
   // 下拉刷新事件
   onPullDownRefresh() {
     //重置关键数据
