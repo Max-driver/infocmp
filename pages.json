@@ -35,7 +35,7 @@
   ],
   "globalStyle": {
     "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "黑马优购",
+    "navigationBarTitleText": "云商城",
     "navigationBarBackgroundColor": "#F00000",
     "backgroundColor": "#FFFFFF"
   },
@@ -90,6 +90,34 @@
 
     }, {
       "path": "search/search",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+
+    }, {
+      "path": "order/order",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+
+    }, {
+      "path": "star/star",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+
+    }, {
+      "path": "star_store/star_store",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+
+    }, {
+      "path": "goods_history/goods_history",
       "style": {
         "navigationBarTitleText": "",
         "enablePullDownRefresh": false

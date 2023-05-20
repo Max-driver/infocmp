@@ -6,6 +6,11 @@
         <my-goods :goods="item"></my-goods>
       </view>
     </view>
+
+    <view class="tip-text" v-if="goodsList.length === 0">
+      <image :src="defaultPic"></image>
+      <view class="null-tips">没有符合商品</view>
+    </view>
   </view>
 </template>
 
@@ -35,7 +40,7 @@ export default {
       isloading: false
     };
   },
-  
+
   onLoad(option) {
     // 将页面参数转存到 this.queryObj 对象中
     this.queryObj.query = option.query || '';
@@ -43,7 +48,7 @@ export default {
     // 调用获取商品列表数据的方法
     this.getGoodsList();
   },
-  
+
   methods: {
     // 获取商品列表数据的方法
     async getGoodsList(cb) {
@@ -62,7 +67,7 @@ export default {
       this.goodsList = [...this.goodsList, ...res.message.goods];
       this.total = res.message.total;
     },
-    
+
     // 点击跳转到商品详情页面
     gotoDetail(item) {
       uni.navigateTo({
@@ -70,7 +75,7 @@ export default {
       });
     }
   },
-  
+
   // 上拉拉及触底事件
   onReachBottom() {
     // 判断是否还有下一页数据: 当前的页码值 * 每页显示多少条数据 >= 总数条数
@@ -83,7 +88,7 @@ export default {
     // 重新获取列表数据
     this.getGoodsList();
   },
-  
+
   // 下拉刷新事件
   onPullDownRefresh() {
     //重置关键数据
@@ -98,4 +103,18 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.tip-text {
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+  overflow: hidden;
+
+  view {
+    text-align: center;
+    margin-top: 10px;
+  }
+}
+</style>
